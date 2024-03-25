@@ -18,7 +18,7 @@ export default function Page() {
     console.log(data);
   });
   return (
-    <div className="flex flex-col gap-1 items-center justify-center p-24">
+    <div className="flex flex-col gap-1 items-center justify-center">
       <div className="flex flex-col justify-center items-center">
         <h1 className="text-2xl mb-8">Register</h1>
       </div>
@@ -75,13 +75,13 @@ export default function Page() {
           sx="w-full"
         />
         <Button name="Submit" />
-        <p className="text-sm flex justify-center">
+        <div className="text-sm flex justify-center">
           Already have an account?{" "}
           <a href="/login" className="text-blue-500 mx-1">
             {" "}
             Login here
           </a>
-        </p>
+        </div>
       </form>
     </div>
   );

@@ -77,7 +77,7 @@ export default function PatientForm() {
           options={["A+", "A-", "B+", "B-", "AB+", "AB-", "O+", "O-"]}
           register={{ ...register("bloodGroup") }}
         />
-        <Button name="Submit" type="submit" />
+        <Button name="Add patient" type="submit" sx="w-full" />
       </form>
     </div>
   );

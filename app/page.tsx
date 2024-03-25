@@ -1,9 +1,11 @@
-import Image from "next/image";
+import Navigation from "./components/Navigation";
 import PaitentForm from "./components/PatientForm";
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <PaitentForm />
+    <main>
+      <div className="flex min-h-screen flex-col items-center pt-5">
+        <PaitentForm />
+      </div>
     </main>
   );
 }

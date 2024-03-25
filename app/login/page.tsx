@@ -17,7 +17,7 @@ export default function Page() {
     console.log(data);
   });
   return (
-    <div className="flex flex-col gap-1 items-center justify-center p-24">
+    <div className="flex flex-col gap-1 items-center justify-center">
       <h1 className="text-2xl mb-8">Login</h1>
       <form
         className="flex flex-col gap-5 border border-scale-400 p-9 rounded-md"
@@ -36,17 +36,20 @@ export default function Page() {
           label="Password"
           placeHolder="Enter your Password"
           register={{ ...register("password") }}
+          type="password"
           sx={"w-80"}
           required
         />
-        <Button name="Login" />
-        <p className="text-sm flex justify-center">
+        <a href="/">
+          <Button name="Login" sx={"w-full"} />
+        </a>
+        <div className="text-sm flex justify-center">
           {"Don't"} have an account?{" "}
           <a href="/register" className="text-blue-500 mx-1">
             {" "}
             Register here
           </a>
-        </p>
+        </div>
       </form>
     </div>
   );

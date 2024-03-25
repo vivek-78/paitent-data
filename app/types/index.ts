@@ -19,4 +19,5 @@ export type FormButton = {
   type?: "submit" | "reset" | "button";
   name: string;
   onClick?: () => void;
+  sx?:string
 };
