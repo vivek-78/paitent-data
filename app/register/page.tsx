@@ -1,25 +1,26 @@
 "use client";
+import React from "react";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
-import Input from "../Input";
-import Button from "../Button";
-import { patientFormValidation, PatientFormValidation } from "../../validation";
-import Select from "../Select";
-export default function PatientForm() {
+import Input from "../components/Input";
+import Select from "../components/Select";
+import Button from "../components/Button";
+import { RegisterFormValidation, registerFormValidation } from "../validation";
+export default function Page() {
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<PatientFormValidation>({
-    resolver: zodResolver(patientFormValidation),
+  } = useForm<RegisterFormValidation>({
+    resolver: zodResolver(registerFormValidation),
   });
   const onSubmit = handleSubmit((data) => {
     console.log(data);
   });
   return (
-    <div className="flex flex-col">
-      <div className="flex items-center justify-center w-full">
-        <h1 className="text-2xl mb-8">Patient Details</h1>
+    <div className="flex flex-col gap-1 items-center justify-center p-24">
+      <div className="flex flex-col justify-center items-center">
+        <h1 className="text-2xl mb-8">Register</h1>
       </div>
       <form
         className="flex flex-col gap-5 border border-scale-400 p-9 rounded-md drop-shadow-sm"
@@ -32,6 +33,7 @@ export default function PatientForm() {
             placeHolder="ex:Jhon"
             register={{ ...register("firstName") }}
             errorMessage={errors.firstName?.message}
+            sx="w-full"
           />
           <Input
             name="lastName"
@@ -39,24 +41,17 @@ export default function PatientForm() {
             placeHolder="Wick"
             register={{ ...register("lastName") }}
             errorMessage={errors.lastName?.message}
+            sx="w-full"
           />
         </div>
-        <div className="flex flex-row gap-3">
-          <Select
-            name="gender"
-            label="Gender"
-            options={["Male", "Female"]}
-            register={{ ...register("gender") }}
-          />
-          <Input
-            name="age"
-            label="Age"
-            placeHolder="18"
-            type="number"
-            register={{ ...register("age") }}
-            errorMessage={errors.age?.message}
-          />
-        </div>
+        <Input
+          name="userId"
+          label="User Id"
+          placeHolder="Enter User Id"
+          register={{ ...register("userId") }}
+          errorMessage={errors.lastName?.message}
+          sx="w-full"
+        />
         <Input
           name="email"
           label="Email"
@@ -71,13 +66,22 @@ export default function PatientForm() {
           register={{ ...register("mobile") }}
           errorMessage={errors.mobile?.message}
         />
-        <Select
-          name="bloodGroup"
-          label="Blood Group"
-          options={["A+", "A-", "B+", "B-", "AB+", "AB-", "O+", "O-"]}
-          register={{ ...register("bloodGroup") }}
+        <Input
+          name="password"
+          label="Password"
+          placeHolder="Enter your password"
+          register={{ ...register("password") }}
+          errorMessage={errors.lastName?.message}
+          sx="w-full"
         />
-        <Button name="Submit" type="submit" />
+        <Button name="Submit" />
+        <p className="text-sm flex justify-center">
+          Already have an account?{" "}
+          <a href="/login" className="text-blue-500 mx-1">
+            {" "}
+            Login here
+          </a>
+        </p>
       </form>
     </div>
   );

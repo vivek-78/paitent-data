@@ -1,6 +1,5 @@
 import React from "react";
 import { FormInputProps } from "@/app/types";
-import cn from "classnames";
 export default function Input({
   onInputChange,
   name,
@@ -10,16 +9,11 @@ export default function Input({
   register,
   errorMessage,
   required,
-  sx
+  sx,
 }: FormInputProps) {
-  var inputClass = cn({
-    "border rounded-md": true,
-    "border-slate-200": !errorMessage,
-    "border-red-500": errorMessage,
-  });
   return (
     <div className="flex flex-col gap-1">
-      <label htmlFor={name}>{label}</label>
+      {label && <label htmlFor={name}>{label}</label>}
       <input
         className={`border border-slate-200 p-2 rounded-md ${sx}`}
         onChange={onInputChange}
@@ -28,7 +22,7 @@ export default function Input({
         placeholder={placeHolder}
         type={type || "string"}
         {...register}
-        required = {required}
+        required={required}
       />
       <p className="text-xs text-red-500">{errorMessage}</p>
     </div>
